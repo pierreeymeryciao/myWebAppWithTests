@@ -25,8 +25,9 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\*Test*.dll
+      **\XUnitTestProject.dll
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+    vsTestVersion: '16.0'
     failOnMinTestsNotRun: false
