@@ -15,6 +15,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
+
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -25,3 +26,8 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
     failOnMinTestsNotRun: false
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
