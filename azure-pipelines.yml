@@ -15,6 +15,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
+
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -25,9 +26,8 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
     failOnMinTestsNotRun: false
-- task: Docker@2
+- task: PublishBuildArtifacts@1
   inputs:
-    containerRegistry: 'docker hub pierreeymeryciao'
-    repository: 'pierreeymeryciao/my-web-app-with-tests'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
