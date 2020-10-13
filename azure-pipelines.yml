@@ -16,7 +16,7 @@ stages:
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'
-        projects: '**/*Test*.csproj'
+        projects: '**/XUnitTestProject.csproj'
     - task: VSTest@2
       inputs:
         testSelector: 'testAssemblies'
@@ -41,3 +41,4 @@ stages:
             repository: 'pierreeymeryciao/my-web-app-with-tests'
             command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
+            addPipelineData: false
