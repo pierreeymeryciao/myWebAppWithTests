@@ -7,22 +7,16 @@ trigger:
 - master
 
 stages:
-- stage: Build
+- stage: BuildAndTest
   pool:
     vmImage: "windows-2019"
   jobs:
-  - job: BuildAppAndTests
+  - job: BuildUnitTests
     steps:
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'
-        projects: '**/*.csproj'
-
-- stage: Test
-  dependsOn: Build
-  pool:
-    vmImage: "windows-2019"
-  jobs:
+        projects: '**/*Test*.csproj'
   - job: RunUnitTests
     steps:
     - task: VSTest@2
@@ -37,7 +31,7 @@ stages:
         failOnMinTestsNotRun: false
 
 - stage: Docker
-  dependsOn: Test
+  dependsOn: BuildAndTest
   pool:
     vmImage: "ubuntu-16.04"
   jobs:
