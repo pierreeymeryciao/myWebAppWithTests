@@ -11,14 +11,12 @@ stages:
   pool:
     vmImage: "windows-2019"
   jobs:
-  - job: BuildUnitTests
+  - job: BuildAndRunUnitTests
     steps:
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'
         projects: '**/*Test*.csproj'
-  - job: RunUnitTests
-    steps:
     - task: VSTest@2
       inputs:
         testSelector: 'testAssemblies'
