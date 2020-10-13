@@ -6,13 +6,8 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      imageName: "ubuntu-16.04"
-    windows:
-      imageName: "vs2017-win2016"
-  maxParallel: 2
+pool:
+  vmImage: "ubuntu-16.04"
 
 steps:
 
