@@ -15,4 +15,4 @@ steps:
     containerRegistry: 'docker hub pierreeymeryciao'
     repository: 'pierreeymeryciao/my-web-app-with-tests'
     command: 'buildAndPush'
-    Dockerfile: '**/myWebAppWithTests/Dockerfile'
+    Dockerfile: '**/Dockerfile'
