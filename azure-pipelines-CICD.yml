@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage: BuildAndTest
   pool:
-    vmImage: "windows-2019"
+    name: 'test pool'
   jobs:
   - job: BuildAndRunUnitTests
     steps:
