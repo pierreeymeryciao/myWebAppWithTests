@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage: BuildAndTest
   pool:
-    name: 'test pool'
+    name: 'windows self-hosted'
   jobs:
   - job: BuildAndRunUnitTests
     steps:
