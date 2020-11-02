@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage: BuildAndTest
   pool:
-    name: "docker self-hosted"
+    vmImage: "windows-2019"
   jobs:
   - job: BuildAndRunUnitTests
     steps:
