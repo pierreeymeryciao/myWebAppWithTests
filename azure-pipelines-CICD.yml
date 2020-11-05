@@ -25,7 +25,8 @@ stages:
           !**\*TestAdapter.dll
           !**\obj\**
         searchFolder: '$(System.DefaultWorkingDirectory)'
-        vsTestVersion: '16.0'
+        vstestLocationMethod: 'location'
+        vstestLocation: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\Extensions\TestPlatform'
         failOnMinTestsNotRun: false
 
 - stage: Docker
