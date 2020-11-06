@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage: BuildAndTest
   pool:
-    name: 'docker self-hosted'
+    vmImage: "windows-2019"
   jobs:
   - job: BuildAndRunUnitTests
     steps:
@@ -25,14 +25,12 @@ stages:
           !**\*TestAdapter.dll
           !**\obj\**
         searchFolder: '$(System.DefaultWorkingDirectory)'
-        vstestLocationMethod: 'location'
-        vstestLocation: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\Extensions\TestPlatform'
         failOnMinTestsNotRun: false
 
 - stage: Docker
   dependsOn: BuildAndTest
   pool:
-    vmImage: "ubuntu-16.04"
+    name: "docker self-hosted"
   jobs:
     - job: BuildAndPushImage
       steps:
