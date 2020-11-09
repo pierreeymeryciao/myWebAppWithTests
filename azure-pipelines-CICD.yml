@@ -44,6 +44,8 @@ stages:
 
 - stage: DeployImage
   dependsOn: Docker
+  pool:
+    name: "docker self-hosted"
   jobs:
     - job: Deploy
       steps:
