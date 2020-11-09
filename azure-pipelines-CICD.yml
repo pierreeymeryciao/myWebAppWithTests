@@ -1,12 +1,9 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
+# Le pipeline se déclenche lors d'une modification sur la branche master
 trigger:
 - master
 
 stages:
+# 1. Exécuter les tests unitaires
 - stage: BuildAndTest
   pool:
     name: "windows self-hosted"
@@ -27,6 +24,7 @@ stages:
         searchFolder: '$(System.DefaultWorkingDirectory)'
         failOnMinTestsNotRun: false
 
+# 2. Construire et pousser une nouvelle image vers un repo Docker Hub
 - stage: Docker
   dependsOn: BuildAndTest
   pool:
@@ -42,6 +40,7 @@ stages:
             Dockerfile: '**/Dockerfile'
             addPipelineData: false
 
+# 3. Déployer la nouvelle image dans notre App Service Azure
 - stage: DeployImage
   dependsOn: Docker
   pool:
