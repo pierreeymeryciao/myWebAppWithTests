@@ -47,8 +47,13 @@ stages:
   jobs:
     - job: Deploy
       steps:
-      - task: AzureWebAppContainer@1
+      - task: AzureRmWebAppDeployment@4
         inputs:
+          ConnectionType: 'AzureRM'
           azureSubscription: 'Abonnement Visual Studio Professional (3f012e51-17da-47ae-b679-97c3367e9fc6)'
-          appName: 'mywebappwithtests'
-          containers: 'pierreeymeryciao/my-web-app-with-tests:$(Build.BuildId)'
+          appType: 'webAppContainer'
+          WebAppName: 'mywebappwithtests'
+          DockerNamespace: 'pierreeymeryciao'
+          DockerRepository: 'my-web-app-with-tests'
+          DockerImageTag: '$(Build.BuildId)'
+
