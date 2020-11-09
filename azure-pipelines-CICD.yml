@@ -51,4 +51,4 @@ stages:
         inputs:
           azureSubscription: 'Abonnement Visual Studio Professional (3f012e51-17da-47ae-b679-97c3367e9fc6)'
           appName: 'mywebappwithtests'
-          containers: 'pierreeymeryciao/my-web-app-with-tests'
+          containers: 'pierreeymeryciao/my-web-app-with-tests:$(Build.BuildId)'
